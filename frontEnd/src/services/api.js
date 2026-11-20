@@ -1,8 +1,8 @@
 const API_BASE = (typeof window !== 'undefined' && window.__API_URL__)
   ? window.__API_URL__
   : (typeof window !== 'undefined' && window.location.port === '3000')
-  ? `${window.location.protocol}//${window.location.hostname}:4000`
-  : '';
+    ? `${window.location.protocol}//${window.location.hostname}:4000`
+    : '';
 
 async function request(path, options = {}) {
   let response;
