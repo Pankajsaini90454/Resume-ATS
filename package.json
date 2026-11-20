@@ -5,8 +5,8 @@
   "description": "Resumely - ATS Resume Intelligence Web App",
   "type": "module",
   "scripts": {
-    "install:all": "npm --prefix frontEnd install && npm --prefix backEnd install",
-    "build": "npm --prefix frontEnd install && npm --prefix frontEnd run build",
+    "install:all": "npm --prefix frontEnd install --include=dev && npm --prefix backEnd install",
+    "build": "npm --prefix frontEnd install --include=dev && npm --prefix frontEnd run build",
     "start": "node backEnd/index.js",
     "dev:backend": "npm --prefix backEnd run dev",
     "dev:frontend": "npm --prefix frontEnd run dev"
