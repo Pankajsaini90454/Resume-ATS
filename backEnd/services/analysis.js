@@ -39,12 +39,13 @@ export async function analyzeResume(text, jobDescription = '') {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   const prompt = `You are an ATS resume expert. Score ONLY evidence present in the supplied resume. Never invent experience, skills, metrics, keywords, or sections. Return ONLY valid JSON matching this exact shape: {"score": number, "verdict": string, "summary": string, "strengths": string[], "improvements": string[], "keywords": {"matched": string[], "missing": string[]}, "sections": [{"name": string, "score": number, "note": string}]}. The score must be a defensible 0-100 assessment based on contact/header, experience evidence, skills/keyword evidence, and ATS formatting. If a job description is supplied, weigh keyword match against it; otherwise state that no target role was supplied. Keep every claim grounded in the text. Resume:\n${text.slice(0, 30000)}\nJob description:\n${jobDescription.slice(0, 12000)}`;
 
-  const primaryModel = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
+  const primaryModel = process.env.GEMINI_MODEL || 'gemini-3.5-flash';
   const candidateModels = [
     primaryModel,
-    'gemini-2.0-flash',
-    'gemini-1.5-flash-8b',
-    'gemini-1.5-pro'
+    'gemini-3.1-flash-lite',
+    'gemini-3.8-flash',
+    'gemini-flash-latest',
+    'gemini-2.5-flash-lite'
   ].filter((m, idx, arr) => arr.indexOf(m) === idx);
 
   let lastError;
